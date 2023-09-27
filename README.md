@@ -24,22 +24,6 @@ The shell supports the following features:
 
 - **Built-in commands**: `wc` is implemented as a built-in command.
 
-## Usage
-
-To build:
-
-```
-make
-``` 
-
-To run:
-
-```
-./shell
-```
-
-Type commands and press enter to execute. Use `ctrl-c` or `ctrl-d` to exit.
-
 ## Code Overview
 
 - `main()` - The main loop reading input and executing commands using `run()`
@@ -53,6 +37,53 @@ Type commands and press enter to execute. Use `ctrl-c` or `ctrl-d` to exit.
 - `sequence()` - Executes commands sequentially separated by `;`
 
 - `pipeline()` - Sets up pipe and executes pipeline with two commands
+
+## Usage 
+
+To build:
+
+```
+gcc main.c -o shell
+```
+
+To run:
+
+```
+./shell
+```
+
+When running, it provides an interactive prompt `ssh361>` where you can enter commands.
+
+## Examples
+
+Here are some example runs and outputs:
+
+```
+ssh361> ls
+file1.txt file2.txt
+
+ssh361> echo "Hello World"
+Hello World
+
+ssh361> wc < file1.txt
+13 25 152
+
+ssh361> grep "hello" file2.txt > output.txt
+
+ssh361> sort file1.txt | uniq
+...
+
+ssh361> uname; uptime; pwd
+Linux
+12:00:00 up 2 days
+/home/user
+```
+
+## Implementation 
+
+- The shell was developed on Ubuntu 20.04 in a Docker container.
+
+- It is implemented in C using libraries like `unistd`, `stdlib`, `sys/wait` etc.
 
 ## References
 
